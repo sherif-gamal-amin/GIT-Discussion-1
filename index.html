@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT Discussion (1)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>GIT Discussion (1)</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>1- You review a 54 years old man with a history of liver disease. You are concerned that there may be evidence of portal hypertension. Which of the following options best describes blood flow to liver ?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Only the portal vein enters the liver via the porta hepatis"> Only the portal vein enters the liver via the porta hepatis</label>
+                <label><input type="radio" name="q1" value="The hepatic artery supplies 75% of the total liver blood flow"> The hepatic artery supplies 75% of the total liver blood flow</label>
+                <label><input type="radio" name="q1" value="The normal portal vein pressure 8-12 mmhg"> The normal portal vein pressure 8-12 mmhg</label>
+                <label><input type="radio" name="q1" value="The portal vein supplies 75% of liver blood flow"> The portal vein supplies 75% of liver blood flow</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>2- Which of the following is the most common symptom of liver disease ?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Fatigue"> Fatigue</label>
+                <label><input type="radio" name="q2" value="Itching"> Itching</label>
+                <label><input type="radio" name="q2" value="Nausea"> Nausea</label>
+                <label><input type="radio" name="q2" value="Jaundice"> Jaundice</label>
+                <label><input type="radio" name="q2" value="Right upper quadrant pain"> Right upper quadrant pain</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>3- Which of the following are tests of hepatic synthesis function ??</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Clotting factors"> Clotting factors</label>
+                <label><input type="radio" name="q3" value="AST, ALT"> AST, ALT</label>
+                <label><input type="radio" name="q3" value="serum globulin"> serum globulin</label>
+                <label><input type="radio" name="q3" value="Bilirubin"> Bilirubin</label>
+                <label><input type="radio" name="q3" value="None of the above"> None of the above</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>4- Which of the following is a marker of synthetic function of the liver that is in widespread clinical use?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Alanine transaminase"> Alanine transaminase</label>
+                <label><input type="radio" name="q4" value="Fibroscan"> Fibroscan</label>
+                <label><input type="radio" name="q4" value="Monoethylglycinexylidide (MEGX) test"> Monoethylglycinexylidide (MEGX) test</label>
+                <label><input type="radio" name="q4" value="Platelet count"> Platelet count</label>
+                <label><input type="radio" name="q4" value="Prothrombin time"> Prothrombin time</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>5- 36 years old man presents with fatigue and tea coloured urine for 5 days. Physical examination reveals jaundice and tender hepatomegaly. AST 2400, ALT 2600, total bilirubin 8.6 mg/ dl. Which of the following diagnosis is least likely to be the cause?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Acute hep A infection"> Acute hep A infection</label>
+                <label><input type="radio" name="q5" value="Acute hep B infection"> Acute hep B infection</label>
+                <label><input type="radio" name="q5" value="Acute hep C infection"> Acute hep C infection</label>
+                <label><input type="radio" name="q5" value="Budd chiari syndrome"> Budd chiari syndrome</label>
+                <label><input type="radio" name="q5" value="Acetaminophen toxicity"> Acetaminophen toxicity</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>6- Which of the following drugs has a direct toxic effect on hepatocytes?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Acetaminophen"> Acetaminophen</label>
+                <label><input type="radio" name="q6" value="Chlorpromazine"> Chlorpromazine</label>
+                <label><input type="radio" name="q6" value="Halothane"> Halothane</label>
+                <label><input type="radio" name="q6" value="Isoniazid"> Isoniazid</label>
+                <label><input type="radio" name="q6" value="Rosuvastatin"> Rosuvastatin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>7- Which of the following medications causes predictable, dose-dependent hepatocellular injury?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="morphine"> morphine</label>
+                <label><input type="radio" name="q7" value="INH"> INH</label>
+                <label><input type="radio" name="q7" value="gold"> gold</label>
+                <label><input type="radio" name="q7" value="acetaminophen"> acetaminophen</label>
+                <label><input type="radio" name="q7" value="acetylsalicylic acid (ASA)"> acetylsalicylic acid (ASA)</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>8- Which of the following is the mostly likely mechanism of acetaminophen hepatotoxicity toxicity?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="an allergic mechanism"> an allergic mechanism</label>
+                <label><input type="radio" name="q8" value="an active metabolite"> an active metabolite</label>
+                <label><input type="radio" name="q8" value="a reaction with hepatic glycogen stores"> a reaction with hepatic glycogen stores</label>
+                <label><input type="radio" name="q8" value="direct toxicity of the parent compound"> direct toxicity of the parent compound</label>
+                <label><input type="radio" name="q8" value="circulating immune complexes"> circulating immune complexes</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>9- A 24-year-old man with a history of depression is brought to the emergency room because of a drug overdose. He is experiencing some nausea and vomiting, but no other symptoms. Physical examination and vital signs are normal. Six hours prior to presentation, he intentionally took 40 tablets of acetaminophen (500 mg/tablet). Which of the following is the most appropriate next step in management?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="give ethanol to compete with the parent drug for metabolism, therefore preventing formation of toxic metabolites"> give ethanol to compete with the parent drug for metabolism, therefore preventing formation of toxic metabolites</label>
+                <label><input type="radio" name="q9" value="give Narcan to block its actions directly"> give Narcan to block its actions directly</label>
+                <label><input type="radio" name="q9" value="give intravenous prostacyclins to maintain cellular integrity"> give intravenous prostacyclins to maintain cellular integrity</label>
+                <label><input type="radio" name="q9" value="give N-acetylcysteine to allow binding of the toxic metabolite"> give N-acetylcysteine to allow binding of the toxic metabolite</label>
+                <label><input type="radio" name="q9" value="give glucocorticoids to block the immune cascade"> give glucocorticoids to block the immune cascade</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>10- Of the following, which one is the most useful prognostic marker in paracetamol overdose ?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="ALT"> ALT</label>
+                <label><input type="radio" name="q10" value="Prothrombin time"> Prothrombin time</label>
+                <label><input type="radio" name="q10" value="Paracetamol levels at presentation"> Paracetamol levels at presentation</label>
+                <label><input type="radio" name="q10" value="The presence of ascites"> The presence of ascites</label>
+                <label><input type="radio" name="q10" value="The presence of encephalopathy"> The presence of encephalopathy</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-11">
+            <p>11- A 27-year-old woman with a history of depression presents to the Emergency Department. She reports taking 50 paracetamol tablets yesterday. Bloods are taken on admission. Which one of the following would most strongly indicate the need for a liver transplant?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="CRP 306"> CRP 306</label>
+                <label><input type="radio" name="q11" value="ALT 2364 iu/l"> ALT 2364 iu/l</label>
+                <label><input type="radio" name="q11" value="INR 4.1"> INR 4.1</label>
+                <label><input type="radio" name="q11" value="Creatinine 230 pmol/l"> Creatinine 230 pmol/l</label>
+                <label><input type="radio" name="q11" value="Arterial pH 7.27"> Arterial pH 7.27</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-12">
+            <p>12- All of the following are likely causes of chronic hepatitis except ..</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="hepatitis A virus"> hepatitis A virus</label>
+                <label><input type="radio" name="q12" value="hepatitis B virus"> hepatitis B virus</label>
+                <label><input type="radio" name="q12" value="hepatitis C virus"> hepatitis C virus</label>
+                <label><input type="radio" name="q12" value="Hepatitis D virus"> Hepatitis D virus</label>
+                <label><input type="radio" name="q12" value="Autoimmune hepatitis"> Autoimmune hepatitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-13">
+            <p>13- There has been an outbreak of hepatitis A virus (HAV) at a local nursery. The head teacher of a primary school in the same area would like some advice on prevention of secondary cases of hepatitis A infection. Of note, no one at the primary school (child or adult member of staff) has been identified as unwell or an index case. What advice do you give to her?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="Everyone in her primary school should be vaccinated"> Everyone in her primary school should be vaccinated</label>
+                <label><input type="radio" name="q13" value="Good hygiene practice is the cornerstone of prevention"> Good hygiene practice is the cornerstone of prevention</label>
+                <label><input type="radio" name="q13" value="HAV is not highly infectious"> HAV is not highly infectious</label>
+                <label><input type="radio" name="q13" value="Infected individuals will always have symptoms"> Infected individuals will always have symptoms</label>
+                <label><input type="radio" name="q13" value="There is a risk of becoming a chronic carrier"> There is a risk of becoming a chronic carrier</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-14">
+            <p>14- A 23-year-old nurse is reviewed in occupational health following a needle stick injury from a man known to be a carrier of hepatitis B. Which one of the following would appear first during acute hepatitis B infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="HBsAg"> HBsAg</label>
+                <label><input type="radio" name="q14" value="HBeAg"> HBeAg</label>
+                <label><input type="radio" name="q14" value="anti-HBg"> anti-HBg</label>
+                <label><input type="radio" name="q14" value="anti-HBs"> anti-HBs</label>
+                <label><input type="radio" name="q14" value="HBeAg"> HBeAg</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-15">
+            <p>15- A 29-year-old woman presents to the physician because of fatigue, dark urine, nausea, vomiting, and decreased appetite. She reports that the symptoms started 1 month ago and have worsened in the last week. She has an insignificant past medical history but does endorse IV drug use as well as unprotected sexual intercourse with several partners over the last 6 months. She is unable to recall her immunization history. Laboratory results show elevated AST (210 U/L) and ALT (352 U/L) levels. The physician determines she is at high risk for hepatitis B virus. What laboratory test(s) should be ordered to screen for ACUTE hepatitis B infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="Anti-HBe"> Anti-HBe</label>
+                <label><input type="radio" name="q15" value="HBsAg and anti-HBs"> HBsAg and anti-HBs</label>
+                <label><input type="radio" name="q15" value="HBeAg"> HBeAg</label>
+                <label><input type="radio" name="q15" value="HBsAg and IgM anti-HBc"> HBsAg and IgM anti-HBc</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-16">
+            <p>16- Which of the following indicates Active hepatitis B ??</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="Hbe Ag"> Hbe Ag</label>
+                <label><input type="radio" name="q16" value="Hbc Ag"> Hbc Ag</label>
+                <label><input type="radio" name="q16" value="Hbs Ag"> Hbs Ag</label>
+                <label><input type="radio" name="q16" value="Hbc Ab"> Hbc Ab</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-17">
+            <p>17- A hospital porter is seen in the occupational health clinic following a needlestick injury. Investigations taken in the clinic show that the patient is HBsAg negative, anti-HBc negative and anti-HBs positive. What is the correct interpretation of these results?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="Acute infection with hepatitis B"> Acute infection with hepatitis B</label>
+                <label><input type="radio" name="q17" value="Chronic dual infection with hepatitis B and delta virus"> Chronic dual infection with hepatitis B and delta virus</label>
+                <label><input type="radio" name="q17" value="Chronic mono-infection with hepatitis B"> Chronic mono-infection with hepatitis B</label>
+                <label><input type="radio" name="q17" value="Previous immunisation against hepatitis B without prior infection"> Previous immunisation against hepatitis B without prior infection</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-18">
+            <p>18- A newly qualified staff nurse at the local hospital undergoes vaccination against hepatitis B. The following results are obtained three months after completion of the primary course:<br>Anti-HBs 10 - 100 mIU/ml<br>What is the most appropriate course of action?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="Repeat course (i.e. 3 doses) of hepatitis B vaccine"> Repeat course (i.e. 3 doses) of hepatitis B vaccine</label>
+                <label><input type="radio" name="q18" value="Repeat anti-HBs level in three months time"> Repeat anti-HBs level in three months time</label>
+                <label><input type="radio" name="q18" value="Give a course of hepatitis B immune globulin (HBIG) + one further dose of hepatitis B vaccine"> Give a course of hepatitis B immune globulin (HBIG) + one further dose of hepatitis B vaccine</label>
+                <label><input type="radio" name="q18" value="Give one further dose of hepatitis B vaccine"> Give one further dose of hepatitis B vaccine</label>
+                <label><input type="radio" name="q18" value="Do a HIV test"> Do a HIV test</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-19">
+            <p>19- An 18 year old medical student has his hepatitis B and C status checked as part of his occupational health screening for entrance to medical school. His results are as follows:<br>LFTs:<br>Bilirubin 12 umol/L (0.70 mg/dl)<br>ALT 19 U/L<br>HCV antibody not detected<br>Hepatitis B surface antigen (HBsAg) positive<br>Antibody to HBsAg (anti-HBs) negative<br>Antibody to hepatitis B core antigen (anti-HBc) lgM negative<br>Anti-HBc lgG positive<br>What is the next step in his management?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="Check hepatitis B e antigen (HBeAg) and HBV DNA level"> Check hepatitis B e antigen (HBeAg) and HBV DNA level</label>
+                <label><input type="radio" name="q19" value="Liver biopsy"> Liver biopsy</label>
+                <label><input type="radio" name="q19" value="Repeat blood tests in 6 months"> Repeat blood tests in 6 months</label>
+                <label><input type="radio" name="q19" value="Tenofovir"> Tenofovir</label>
+                <label><input type="radio" name="q19" value="Vaccinate for hepatitis B"> Vaccinate for hepatitis B</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-20">
+            <p>20- male known addict on marijuana and ecstasy and IV cocaine presents with jaundice. Labs results are ...<br>ALT 1400<br>AST 1200<br>Alkaline phosphatase 346<br>Bilirubin total 12<br>Birubin direct 10<br>HCV ab positive<br>HbsAg positive<br>Hbc igM positive<br>Hbc igG negative<br>Hbe negative<br>HAV igm and igg negative<br>What is the cause of this patient jaundice?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="Acute hep A"> Acute hep A</label>
+                <label><input type="radio" name="q20" value="Acute hep B"> Acute hep B</label>
+                <label><input type="radio" name="q20" value="Acute hep C"> Acute hep C</label>
+                <label><input type="radio" name="q20" value="Chronic hep B"> Chronic hep B</label>
+                <label><input type="radio" name="q20" value="Drug induced hepatitis"> Drug induced hepatitis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-21">
+            <p>21- A 42-year-old dentist is reviewed in the medical clinic complaining of persistent lethargy. Routine bloods show abnormal liver function tests so a hepatitis screen is sent. The results are shown below:
+            Anti-HAV IgG negative
+            HBsAg negative
+            Anti-HBs positive
+            Anti-HBe negative
+            Anti-HCV positive
+            What do these results most likely demonstrate?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="Hepatitis B infection"> Hepatitis B infection</label>
+                <label><input type="radio" name="q21" value="Hepatitis C infection"> Hepatitis C infection</label>
+                <label><input type="radio" name="q21" value="Previous vaccination to hepatitis B and C"> Previous vaccination to hepatitis B and C</label>
+                <label><input type="radio" name="q21" value="Hepatitis C infection with previous hepatitis B vaccination"> Hepatitis C infection with previous hepatitis B vaccination</label>
+                <label><input type="radio" name="q21" value="Hepatitis B and C infection"> Hepatitis B and C infection</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-22">
+            <p>22- A 25-year-old intravenous drug user with chronic hepatitis C becomes pregnant. Approximately what is the chance of the virus being transmitted to her child?</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="<10%"> <10%</label>
+                <label><input type="radio" name="q22" value="10-20%"> 10-20%</label>
+                <label><input type="radio" name="q22" value="20-30%"> 20-30%</label>
+                <label><input type="radio" name="q22" value="30-40%"> 30-40%</label>
+                <label><input type="radio" name="q22" value="40-50%"> 40-50%</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-23">
+            <p>23- What percentage of patients who contract the hepatitis C virus will become chronically infected?</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="30-35%"> 30-35%</label>
+                <label><input type="radio" name="q23" value="80-85%"> 80-85%</label>
+                <label><input type="radio" name="q23" value="85-70%"> 85-70%</label>
+                <label><input type="radio" name="q23" value="5-10%"> 5-10%</label>
+                <label><input type="radio" name="q23" value="15-20%"> 15-20%</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-24">
+            <p>24- An otherwise healthy 35 year old nurse and part-time tattoo artist is referred with a persistent, fluctuating transaminitis (ALT 40-120 U/L) that has been present for several years. What viral infection would you consider most likely?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="Epstein-Barr virus (EBV)"> Epstein-Barr virus (EBV)</label>
+                <label><input type="radio" name="q24" value="Hepatitis A"> Hepatitis A</label>
+                <label><input type="radio" name="q24" value="Hepatitis B"> Hepatitis B</label>
+                <label><input type="radio" name="q24" value="Hepatitis C"> Hepatitis C</label>
+                <label><input type="radio" name="q24" value="Hepatitis E"> Hepatitis E</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-25">
+            <p>25- Which one of the following statements best describes the prevention and treatment of hepatitis C?</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="No vaccine is available and treatment is only successful in around 10-15% of patients"> No vaccine is available and treatment is only successful in around 10-15% of patients</label>
+                <label><input type="radio" name="q25" value="No vaccine and no treatment is available"> No vaccine and no treatment is available</label>
+                <label><input type="radio" name="q25" value="A vaccine is available and treatment is successful in around 50% of patients"> A vaccine is available and treatment is successful in around 50% of patients</label>
+                <label><input type="radio" name="q25" value="A vaccine is available but no treatment has been shown to be effective"> A vaccine is available but no treatment has been shown to be effective</label>
+                <label><input type="radio" name="q25" value="No vaccine is available but treatment is successful in around 50% of patients"> No vaccine is available but treatment is successful in around 50% of patients</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-26">
+            <p>26- patient with HCV positive during laboratory testing. What is the next step?</p>
+            <div class="options">
+                <label><input type="radio" name="q26" value="Start direct antiviral drugs"> Start direct antiviral drugs</label>
+                <label><input type="radio" name="q26" value="Give hepatitis B vaccine"> Give hepatitis B vaccine</label>
+                <label><input type="radio" name="q26" value="Liver biopsy"> Liver biopsy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-27">
+            <p>27- A 37 year old male prisoner is newly diagnosed with HCV. He has no significant past medical history or drug history. His results are as follows: 
+            Full blood count: 
+            Haemoglobin 130 g/L 
+            White cell count (WCC) 4.2
+            Platelets 98 x 10^9 /L 
+            LFTs: 
+            Bilirubin 42 umol/L (2.46 mg/dL) 
+            ALT 60 U/L 
+            ALP 64 U/L 
+            Ultrasound liver: irregular, shrunken liver with no focal lesion and no free fluid, Splenomegaly. 
+            HCV genotype 1a, HCV RNA 750000 U/mL. 
+            Elastography 25 kPa (2-7 kPa). 
+            What is the next appropriate management step?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="Genotype 1a is more difficult to treat and therefore he should have interferon therapy"> Genotype 1a is more difficult to treat and therefore he should have interferon therapy</label>
+                <label><input type="radio" name="q27" value="He does not have advanced fibrosis and therefore can be discharged from the clinic"> He does not have advanced fibrosis and therefore can be discharged from the clinic</label>
+                <label><input type="radio" name="q27" value="He needs a liver biopsy to accurately stage his liver disease"> He needs a liver biopsy to accurately stage his liver disease</label>
+                <label><input type="radio" name="q27" value="He should be offered oral antiviral therapy"> He should be offered oral antiviral therapy</label>
+                <label><input type="radio" name="q27" value="No treatment; patient should be observed with continued outpatient follow-up"> No treatment; patient should be observed with continued outpatient follow-up</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-28">
+            <p>28- Which of the following viral causes of acute hepatitis is most likely to cause fulminant hepatitis in pregnant woman?</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="hepatitis A"> hepatitis A</label>
+                <label><input type="radio" name="q28" value="hepatitis B"> hepatitis B</label>
+                <label><input type="radio" name="q28" value="hepatitis C"> hepatitis C</label>
+                <label><input type="radio" name="q28" value="Hepatitis D"> Hepatitis D</label>
+                <label><input type="radio" name="q28" value="Hepatitis E"> Hepatitis E</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-29">
+            <p>29- A 25 year old pregnant woman with no significant past medical history presents with a 1-week history of acute lethargy and jaundice 2 weeks after returning from a week-long holiday in Turkey. His alanine aminotransferase (ALT) is found to be over 10000 U/L. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q29" value="Alcoholic hepatitis"> Alcoholic hepatitis</label>
+                <label><input type="radio" name="q29" value="Hepatitis B virus"> Hepatitis B virus</label>
+                <label><input type="radio" name="q29" value="Hepatitis C virus"> Hepatitis C virus</label>
+                <label><input type="radio" name="q29" value="Hepatitis E virus"> Hepatitis E virus</label>
+                <label><input type="radio" name="q29" value="Wilson's disease"> Wilson's disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-30">
+            <p>30- patient with ulcerative colitis presents to clinic with red and irritated eyes. There is no vision loss. What is your diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="Episcleritis"> Episcleritis</label>
+                <label><input type="radio" name="q30" value="Scleritis"> Scleritis</label>
+                <label><input type="radio" name="q30" value="Anterior uveitis"> Anterior uveitis</label>
+                <label><input type="radio" name="q30" value="Chalazion"> Chalazion</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-31">
+            <p>31- Canker sores occur in ??</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="Crohns"> Crohns</label>
+                <label><input type="radio" name="q31" value="Diverticulitis"> Diverticulitis</label>
+                <label><input type="radio" name="q31" value="Appendicitis"> Appendicitis</label>
+                <label><input type="radio" name="q31" value="Behcet disease"> Behcet disease</label>
+                <label><input type="radio" name="q31" value="A, D"> A, D</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-32">
+            <p>32- A 38 year old woman, para 2+0 consults her family physician on account of new-onset painful mouth ulcers. Which statement about mouth ulcers is correct?</p>
+            <div class="options">
+                <label><input type="radio" name="q32" value="They are common feature of inflammatory bowel disease ( Crhons )"> They are common feature of inflammatory bowel disease ( Crhons )</label>
+                <label><input type="radio" name="q32" value="They are malignant in 10% of cases"> They are malignant in 10% of cases</label>
+                <label><input type="radio" name="q32" value="They are managed with antibiotics in recurrent cases"> They are managed with antibiotics in recurrent cases</label>
+                <label><input type="radio" name="q32" value="They are more common in pregnancy"> They are more common in pregnancy</label>
+                <label><input type="radio" name="q32" value="They are particularly common in patients with diverticulitis"> They are particularly common in patients with diverticulitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-33">
+            <p>33- 28 years old man presents with painful Oral aphthous ulcers, venous thromboembolism and Erythema nodosum. What is your diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="Behcet syndrome"> Behcet syndrome</label>
+                <label><input type="radio" name="q33" value="Herpes simplex infection"> Herpes simplex infection</label>
+                <label><input type="radio" name="q33" value="Psoriasis"> Psoriasis</label>
+                <label><input type="radio" name="q33" value="Treponema pallidum infection"> Treponema pallidum infection</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-34">
+            <p>34- Which is the most common feature and clinical hallmark of carcinoid syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="Bronchospasm"> Bronchospasm</label>
+                <label><input type="radio" name="q34" value="Facial Flushing"> Facial Flushing</label>
+                <label><input type="radio" name="q34" value="Diarrhea"> Diarrhea</label>
+                <label><input type="radio" name="q34" value="Telangectasia"> Telangectasia</label>
+                <label><input type="radio" name="q34" value="Cardiac valvular lesions"> Cardiac valvular lesions</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-35">
+            <p>35- Commonest sites of carcinoid tumour is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q35" value="Stomach"> Stomach</label>
+                <label><input type="radio" name="q35" value="Ileum"> Ileum</label>
+                <label><input type="radio" name="q35" value="Appendix"> Appendix</label>
+                <label><input type="radio" name="q35" value="Colon"> Colon</label>
+                <label><input type="radio" name="q35" value="Duodenum"> Duodenum</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-36">
+            <p>36-  Patient with Flushing, diarrhoea and murmur. Investigation of choice is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="Urinary 5 HIAA ( hydroxy indole acetic acid )"> Urinary 5 HIAA ( hydroxy indole acetic acid )</label>
+                <label><input type="radio" name="q36" value="Intestinal biopsy"> Intestinal biopsy</label>
+                <label><input type="radio" name="q36" value="Echocardiography"> Echocardiography</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-37">
+            <p>37- Why do patients with carcinoid syndrome develop memory impairment, generalised weakness, loss of appetite, abdominal pain, vomiting, diarrhoea, and pigmented skin rash with scaling in sun exposed areas?</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="Vitamin B12 deficiency"> Vitamin B12 deficiency</label>
+                <label><input type="radio" name="q37" value="Thiamine deficiency"> Thiamine deficiency</label>
+                <label><input type="radio" name="q37" value="Niacin deficiency"> Niacin deficiency</label>
+                <label><input type="radio" name="q37" value="Pyridoxine deficiency"> Pyridoxine deficiency</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-38">
+            <p>38- 25 years old woman with cystic fibrosis is diagnosed to have chronic pancreatitis. She is at risk for all of the following except..</p>
+            <div class="options">
+                <label><input type="radio" name="q38" value="Vitamin B12 deficiency"> Vitamin B12 deficiency</label>
+                <label><input type="radio" name="q38" value="Vitamin A deficiency"> Vitamin A deficiency</label>
+                <label><input type="radio" name="q38" value="Niacin deficiency"> Niacin deficiency</label>
+                <label><input type="radio" name="q38" value="Steatorrhea"> Steatorrhea</label>
+                <label><input type="radio" name="q38" value="Pancreatic cancer"> Pancreatic cancer</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-39">
+            <p>39- On examination, you note bleeding gums. Which of the following deficiency syndromes can lead to gum hypertrophy?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="Pellagra"> Pellagra</label>
+                <label><input type="radio" name="q39" value="Beri Beri"> Beri Beri</label>
+                <label><input type="radio" name="q39" value="Scurvy"> Scurvy</label>
+                <label><input type="radio" name="q39" value="Osteomalacia"> Osteomalacia</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-40">
+            <p>40- Where is the majority of iron found in the body?</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="Bone"> Bone</label>
+                <label><input type="radio" name="q40" value="Haemoglobin"> Haemoglobin</label>
+                <label><input type="radio" name="q40" value="Myoglobin"> Myoglobin</label>
+                <label><input type="radio" name="q40" value="Plasma iron"> Plasma iron</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-41">
+            <p>41- complications of peptic ulcer?</p>
+            <div class="options">
+                <label><input type="radio" name="q41" value="Internal bleeding"> Internal bleeding</label>
+                <label><input type="radio" name="q41" value="Gastric cancer"> Gastric cancer</label>
+                <label><input type="radio" name="q41" value="Chronic gastritis"> Chronic gastritis</label>
+                <label><input type="radio" name="q41" value="All of the above"> All of the above</label>
+                <label><input type="radio" name="q41" value="None of the above"> None of the above</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-42">
+            <p>42- Most common complication of peptic ulcer?</p>
+            <div class="options">
+                <label><input type="radio" name="q42" value="Internal bleeding"> Internal bleeding</label>
+                <label><input type="radio" name="q42" value="Gastric cancer"> Gastric cancer</label>
+                <label><input type="radio" name="q42" value="Chronic gastritis"> Chronic gastritis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-43">
+            <p>43- complications of ERCP?</p>
+            <div class="options">
+                <label><input type="radio" name="q43" value="pancreatitis"> pancreatitis</label>
+                <label><input type="radio" name="q43" value="duodenal perforation"> duodenal perforation</label>
+                <label><input type="radio" name="q43" value="Ascending cholangitis"> Ascending cholangitis</label>
+                <label><input type="radio" name="q43" value="All of the above"> All of the above</label>
+                <label><input type="radio" name="q43" value="None of the above"> None of the above</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-44">
+            <p>44- Twelve hours after endoscopic retrograde cholangiopancreatography (ERCP) for stent insertion due to biliary stricture, a patient develops severe central abdominal pain. Blood tests show .. bilirubin 20 mmol/L, ALT 120 U/L, ALP 80 U/L, GGT 98 U/L, amylase 1400 U/L, haemoglobin 120 g/L, WCC 12.4x109/L. What complication has she developed?</p>
+            <div class="options">
+                <label><input type="radio" name="q44" value="Ascending cholangitis"> Ascending cholangitis</label>
+                <label><input type="radio" name="q44" value="Common bile duct perforation"> Common bile duct perforation</label>
+                <label><input type="radio" name="q44" value="Duodenal perforation"> Duodenal perforation</label>
+                <label><input type="radio" name="q44" value="Haemorrhage"> Haemorrhage</label>
+                <label><input type="radio" name="q44" value="Pancreatitis"> Pancreatitis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-45">
+            <p>45- A 54-year-old man develops central abdominal pain a few hours after having an Endoscopic Retrograde Cholangiopancreatography (ERCP) performed. Investigations reveal the following: Amylase 545 u/dl Erect chest x-ray Normal heart and lungs. No free air noted. What is the most appropriate management?</p>
+            <div class="options">
+                <label><input type="radio" name="q45" value="Repeat ERCP + analgesia"> Repeat ERCP + analgesia</label>
+                <label><input type="radio" name="q45" value="Reassure normal + analgesia"> Reassure normal + analgesia</label>
+                <label><input type="radio" name="q45" value="Intravenous ciprofloxacin + analgesia"> Intravenous ciprofloxacin + analgesia</label>
+                <label><input type="radio" name="q45" value="Surgical opinion + analgesia"> Surgical opinion + analgesia</label>
+                <label><input type="radio" name="q45" value="Intravenous fluids + analgesia"> Intravenous fluids + analgesia</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-46">
+            <p>46- A 56 year old man with a history of heavy alcohol use presents with abdominal bloating following a recent episode of severe central abdominal pain radiating to the back. Clinical examination reveals resolving periumbilical bruising and abdominal distension with shifting dullness. Blood tests demonstrate bilirubin 18 mmol/L (1.05 mg/dL), alanine aminotransferase (ALT) 50 U/L, ALP 200 U/L, GGT 823 U/L, international normalised ratio (INR) 1.1. What initial test is most likely to give the correct diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q46" value="Alpha-fetoprotein"> Alpha-fetoprotein</label>
+                <label><input type="radio" name="q46" value="Ascitic fluid albumin"> Ascitic fluid albumin</label>
+                <label><input type="radio" name="q46" value="Ascitic fluid amylase"> Ascitic fluid amylase</label>
+                <label><input type="radio" name="q46" value="Ascitic fluid cell count"> Ascitic fluid cell count</label>
+                <label><input type="radio" name="q46" value="Serum albumin"> Serum albumin</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-47">
+            <p>47- A 45-year-old man is admitted to the Emergency Department with severe abdominal pain. He smokes 20 cigarettes a day and drinks approximately 50 units of alcohol per week. He also complains of sudden deterioration in vision. Fundoscopy reveals shows multiple micro infarcts {cotton wool spots). Which investigation would best confirm the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q47" value="Gastroscopy"> Gastroscopy</label>
+                <label><input type="radio" name="q47" value="Serum glucose"> Serum glucose</label>
+                <label><input type="radio" name="q47" value="Amylase"> Amylase</label>
+                <label><input type="radio" name="q47" value="Biliary USS"> Biliary USS</label>
+                <label><input type="radio" name="q47" value="ECG"> ECG</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-48">
+            <p>48- Which one of the following conditions is least likely to develop following hepatitis B infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q48" value="Glomerulonephritis"> Glomerulonephritis</label>
+                <label><input type="radio" name="q48" value="Hepatocellular carcinoma"> Hepatocellular carcinoma</label>
+                <label><input type="radio" name="q48" value="Acute pancreatitis"> Acute pancreatitis</label>
+                <label><input type="radio" name="q48" value="Chronic infection"> Chronic infection</label>
+                <label><input type="radio" name="q48" value="Polyarteritis nodosa"> Polyarteritis nodosa</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-49">
+            <p>49- Which one of the following is most associated with the development of acute pancreatitis?</p>
+            <div class="options">
+                <label><input type="radio" name="q49" value="Hyperchylomicronemia"> Hyperchylomicronemia</label>
+                <label><input type="radio" name="q49" value="Amyloidosis"> Amyloidosis</label>
+                <label><input type="radio" name="q49" value="Hypogammaglobulinaemia"> Hypogammaglobulinaemia</label>
+                <label><input type="radio" name="q49" value="Hypercholesterolaemia"> Hypercholesterolaemia</label>
+                <label><input type="radio" name="q49" value="Hypotriglyceridaemia"> Hypotriglyceridaemia</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-50">
+            <p>50- Which of the following drugs is recognised cause of pancreatitis?</p>
+            <div class="options">
+                <label><input type="radio" name="q50" value="Atenolol"> Atenolol</label>
+                <label><input type="radio" name="q50" value="Amiodarone"> Amiodarone</label>
+                <label><input type="radio" name="q50" value="Azathioprine"> Azathioprine</label>
+                <label><input type="radio" name="q50" value="Amitriptyline"> Amitriptyline</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-51">
+            <p>51- A 34-year-old male is admitted with central abdominal pain radiating through to the back and vomiting. The following results are obtained ..<br>
+            Amylase 1245 u/dl<br>
+            Which one of the following medications is most likely to be responsible?</p>
+            <div class="options">
+                <label><input type="radio" name="q51" value="Phenytoin"> Phenytoin</label>
+                <label><input type="radio" name="q51" value="Sodium valproate"> Sodium valproate</label>
+                <label><input type="radio" name="q51" value="Metoclopramide"> Metoclopramide</label>
+                <label><input type="radio" name="q51" value="Sumatriptan"> Sumatriptan</label>
+                <label><input type="radio" name="q51" value="Pizotifen"> Pizotifen</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-52">
+            <p>52- Patient complains of sever epigastric pain radiated to back. Serum amylase 900, serum lipase 600 which of the following is the next step help to detect the cause?</p>
+            <div class="options">
+                <label><input type="radio" name="q52" value="Ultrasound"> Ultrasound</label>
+                <label><input type="radio" name="q52" value="CT abdomen"> CT abdomen</label>
+                <label><input type="radio" name="q52" value="ERCP"> ERCP</label>
+                <label><input type="radio" name="q52" value="Upper endoscopy"> Upper endoscopy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-53">
+            <p>53- A 39-year-old man with a history of alcohol excess presents to the Emergency Department with a 2 day history of severe epigastric pain. His amylase is found to be 1260. What is the best marker of severity?</p>
+            <div class="options">
+                <label><input type="radio" name="q53" value="CRP"> CRP</label>
+                <label><input type="radio" name="q53" value="Amylase (on admission)"> Amylase (on admission)</label>
+                <label><input type="radio" name="q53" value="Pain scores"> Pain scores</label>
+                <label><input type="radio" name="q53" value="Lipase (on admission)"> Lipase (on admission)</label>
+                <label><input type="radio" name="q53" value="Number of similar previous admissions"> Number of similar previous admissions</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-54">
+            <p>54- Which one of the following is in direct anatomical contact with left kidney?</p>
+            <div class="options">
+                <label><input type="radio" name="q54" value="Stomach"> Stomach</label>
+                <label><input type="radio" name="q54" value="Pancreas"> Pancreas</label>
+                <label><input type="radio" name="q54" value="Spleen"> Spleen</label>
+                <label><input type="radio" name="q54" value="Duodenum"> Duodenum</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-55">
+            <p>55- Pancreas shares its blood supply with ..</p>
+            <div class="options">
+                <label><input type="radio" name="q55" value="Sigmoid colon"> Sigmoid colon</label>
+                <label><input type="radio" name="q55" value="Psoas muscle"> Psoas muscle</label>
+                <label><input type="radio" name="q55" value="Duodenum"> Duodenum</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-56">
+            <p>56- The arterial blood supply to the pancreas is shared with which other organ/tissue?</p>
+            <div class="options">
+                <label><input type="radio" name="q56" value="Left kidney"> Left kidney</label>
+                <label><input type="radio" name="q56" value="Ovaries"> Ovaries</label>
+                <label><input type="radio" name="q56" value="Psoas muscle"> Psoas muscle</label>
+                <label><input type="radio" name="q56" value="Sigmoid colon"> Sigmoid colon</label>
+                <label><input type="radio" name="q56" value="Terminal ileum"> Terminal ileum</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-57">
+            <p>57- A 40 year old male with a diagnosis of chronic pancreatitis complains of foul-smelling pale stools, which are difficult to flush. A deficiency in which of the following hormones/ enzymes is responsible?</p>
+            <div class="options">
+                <label><input type="radio" name="q57" value="Chymotrypsin"> Chymotrypsin</label>
+                <label><input type="radio" name="q57" value="Glucagon"> Glucagon</label>
+                <label><input type="radio" name="q57" value="Lipase"> Lipase</label>
+                <label><input type="radio" name="q57" value="Maltase"> Maltase</label>
+                <label><input type="radio" name="q57" value="Somatostatin"> Somatostatin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-58">
+            <p>58- A 53-year-old man presents to the emergency department with severe epigastric abdominal pain. His temperature is 37.2°C, blood pressure 110/70 mm Hg, pulse 110/min, and respirations 20/min. Examination of the heart and lungs is normal, and his abdomen is tender in the epigastric region. His white count is 15,000/mL and amylase is 450 U/L (25–125 U/L). CT abdomen shows pancreatic calcification. Which of the following laboratory abnormalities is also most likely to be present?</p>
+            <div class="options">
+                <label><input type="radio" name="q58" value="hypoglycemia"> hypoglycemia</label>
+                <label><input type="radio" name="q58" value="hypercholesterolemia"> hypercholesterolemia</label>
+                <label><input type="radio" name="q58" value="hyperglycemia"> hyperglycemia</label>
+                <label><input type="radio" name="q58" value="hypercalcemia"> hypercalcemia</label>
+                <label><input type="radio" name="q58" value="hypercarbia"> hypercarbia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-59">
+            <p>59- A 40 year old male with long-standing alcohol excess has an episode of severe central abdominal pain. Six weeks later he develops vomiting following eating. On examination he has a gastric splash. What investigation will give the diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q59" value="Barium meal"> Barium meal</label>
+                <label><input type="radio" name="q59" value="CT pancreas"> CT pancreas</label>
+                <label><input type="radio" name="q59" value="Oesophageal manometry"> Oesophageal manometry</label>
+                <label><input type="radio" name="q59" value="Upper gastrointestinal endoscopy"> Upper gastrointestinal endoscopy</label>
+                <label><input type="radio" name="q59" value="Water-soluble contrast meal"> Water-soluble contrast meal</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-60">
+            <p>60- A 38-year-old female with a long history of alcohol excess presents with abdominal pain, weight loss and bulky stools. What is the most suitable investigation to confirm the diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q60" value="Endoscopic ultrasound"> Endoscopic ultrasound</label>
+                <label><input type="radio" name="q60" value="Endoscopic retrograde cholangiopancreatography"> Endoscopic retrograde cholangiopancreatography</label>
+                <label><input type="radio" name="q60" value="Ultrasound abdomen"> Ultrasound abdomen</label>
+                <label><input type="radio" name="q60" value="CT abdomen"> CT abdomen</label>
+                <label><input type="radio" name="q60" value="Endoscopy with D2 biopsy"> Endoscopy with D2 biopsy</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-61">
+            <p>61- Where do the majority of VIPomas arise from?</p>
+            <div class="options">
+                <label><input type="radio" name="q61" value="Small intestine"> Small intestine</label>
+                <label><input type="radio" name="q61" value="Pituitary"> Pituitary</label>
+                <label><input type="radio" name="q61" value="Pancreas"> Pancreas</label>
+                <label><input type="radio" name="q61" value="Antrum of stomach"> Antrum of stomach</label>
+                <label><input type="radio" name="q61" value="Pylorus of stomach"> Pylorus of stomach</label>
+            </div>
+        </div>
+        <div class="question" id="question-62">
+            <p>62- She relates that .. I have always been sicky, most of my life. Normal investigations. What is diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q62" value="Agoraphobia"> Agoraphobia</label>
+                <label><input type="radio" name="q62" value="Conversion disorder"> Conversion disorder</label>
+                <label><input type="radio" name="q62" value="Hypochondriasis"> Hypochondriasis</label>
+                <label><input type="radio" name="q62" value="Somatization disorder"> Somatization disorder</label>
+            </div>
+        </div>
+        <div class="question" id="question-63">
+            <p>63- 41 years old female claims that .. certain I have breast cancer. Workup is negative. What is your diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q63" value="hypochondriasis"> hypochondriasis</label>
+                <label><input type="radio" name="q63" value="Conversion disorder"> Conversion disorder</label>
+                <label><input type="radio" name="q63" value="Agoraphobia"> Agoraphobia</label>
+                <label><input type="radio" name="q63" value="Somatization disorder"> Somatization disorder</label>
+            </div>
+        </div>
+        <div class="question" id="question-64">
+            <p>64- Which of the following gut hormones stimulates gastric acid secretion?</p>
+            <div class="options">
+                <label><input type="radio" name="q64" value="Gastrin"> Gastrin</label>
+                <label><input type="radio" name="q64" value="Polypeptide p"> Polypeptide p</label>
+                <label><input type="radio" name="q64" value="Secretin"> Secretin</label>
+                <label><input type="radio" name="q64" value="Vasoactive intestinal peptide VIP"> Vasoactive intestinal peptide VIP</label>
+                <label><input type="radio" name="q64" value="cholecystokinin CCK"> cholecystokinin CCK</label>
+            </div>
+        </div>
+        <div class="question" id="question-65">
+            <p>65- Gastrin is predominantly secreted from</p>
+            <div class="options">
+                <label><input type="radio" name="q65" value="Antral mucosa"> Antral mucosa</label>
+                <label><input type="radio" name="q65" value="Fundus of the stomach"> Fundus of the stomach</label>
+                <label><input type="radio" name="q65" value="2nd part of the duodenum"> 2nd part of the duodenum</label>
+                <label><input type="radio" name="q65" value="Jejunum"> Jejunum</label>
+                <label><input type="radio" name="q65" value="ilium"> ilium</label>
+            </div>
+        </div>
+        <div class="question" id="question-66">
+            <p>66- Which of the following stimulates bicarbonate secretion from pancreas and liver?</p>
+            <div class="options">
+                <label><input type="radio" name="q66" value="Gastrin"> Gastrin</label>
+                <label><input type="radio" name="q66" value="Polypeptide p"> Polypeptide p</label>
+                <label><input type="radio" name="q66" value="Secretin"> Secretin</label>
+                <label><input type="radio" name="q66" value="Vasoactive intestinal peptide VIP"> Vasoactive intestinal peptide VIP</label>
+                <label><input type="radio" name="q66" value="cholecystokinin CCK"> cholecystokinin CCK</label>
+            </div>
+        </div>
+        <div class="question" id="question-67">
+            <p>67- Which of the following hormones stimulates contraction of gall bladder?</p>
+            <div class="options">
+                <label><input type="radio" name="q67" value="Gastrin"> Gastrin</label>
+                <label><input type="radio" name="q67" value="Somatostatin"> Somatostatin</label>
+                <label><input type="radio" name="q67" value="Secretin"> Secretin</label>
+                <label><input type="radio" name="q67" value="Vasoactive intestinal peptide VIP"> Vasoactive intestinal peptide VIP</label>
+                <label><input type="radio" name="q67" value="cholecystokinin CCK"> cholecystokinin CCK</label>
+            </div>
+        </div>
+        <div class="question" id="question-68">
+            <p>68- A 43-year-old man is reviewed in the gastroenterology clinic. He has had troublesome dyspepsia tor the past six months which has not settled with proton pump inhibitor therapy. During the review of systems he also reports passing 7 watery stools per day. An OGD 3 weeks ago showed gastric erosions and ulcers. Which one of the following investigations is most likely to be diagnostic?</p>
+            <div class="options">
+                <label><input type="radio" name="q68" value="Serum amylase"> Serum amylase</label>
+                <label><input type="radio" name="q68" value="Urea breath test for Helicobacterpylori"> Urea breath test for Helicobacterpylori</label>
+                <label><input type="radio" name="q68" value="Fasting gastrin"> Fasting gastrin</label>
+                <label><input type="radio" name="q68" value="14C-xylose breath test"> 14C-xylose breath test</label>
+                <label><input type="radio" name="q68" value="CT abdomen"> CT abdomen</label>
+            </div>
+        </div>
+        <div class="question" id="question-69">
+            <p>69- A 49-year-old female is referred to the gastroenterology out-patient clinic with a 3 month history of epigastric pain and diarrhoea. Her GP initially prescribed lansoprazole 30mg od Put this didn't alleviate her symptoms. The only past medical history of note is hyperparathyroidism. Endoscopy revealed multiple duodenal ulcerations. What is the likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q69" value="Multiple endocrine neoplasia type II a"> Multiple endocrine neoplasia type II a</label>
+                <label><input type="radio" name="q69" value="Coeliac disease"> Coeliac disease</label>
+                <label><input type="radio" name="q69" value="Multiple endocrine neoplasia type 1"> Multiple endocrine neoplasia type 1</label>
+                <label><input type="radio" name="q69" value="Autoimmune polyendocrinopathy syndrome"> Autoimmune polyendocrinopathy syndrome</label>
+                <label><input type="radio" name="q69" value="Crohn's disease"> Crohn's disease</label>
+            </div>
+        </div>
+        <div class="question" id="question-70">
+            <p>70- A 32 year old man with a previous pituitary adenoma has repeated admissions with duodenal ulceration despite proton pump inhibitor. What is the likely genetic mutation?</p>
+            <div class="options">
+                <label><input type="radio" name="q70" value="BRCA1"> BRCA1</label>
+                <label><input type="radio" name="q70" value="BRCA2"> BRCA2</label>
+                <label><input type="radio" name="q70" value="JAK2"> JAK2</label>
+                <label><input type="radio" name="q70" value="MEN1"> MEN1</label>
+                <label><input type="radio" name="q70" value="RET"> RET</label>
+            </div>
+        </div>
+        <div class="question" id="question-71">
+            <p>71- A 42 year old man has recurrent duodenal ulceration with bleeding despite omeprazole therapy use. H. pylori serology has been negative on three occasions. An abnormality is noticed on imaging of his pancreas. What other health problems might this man have?</p>
+            <div class="options">
+                <label><input type="radio" name="q71" value="Marfan's syndrome"> Marfan's syndrome</label>
+                <label><input type="radio" name="q71" value="Medullary thyroid cancer"> Medullary thyroid cancer</label>
+                <label><input type="radio" name="q71" value="Phaeochromocytoma"> Phaeochromocytoma</label>
+                <label><input type="radio" name="q71" value="Pituitary adenoma"> Pituitary adenoma</label>
+                <label><input type="radio" name="q71" value="Type 1 diabetes mellitus"> Type 1 diabetes mellitus</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 71;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "The portal vein supplies 75% of liver blood flow",
+            q2: "Fatigue",
+            q3: "Clotting factors",
+            q4: "Prothrombin time",
+            q5: "Acute hep C infection",
+            q6: "Acetaminophen",
+            q7: "acetaminophen",
+            q8: "an active metaboite",
+            q9: "give N-acetylcysteine to allow binding of the toxic metabolite",
+            q10: "Prothrombin time",
+            q11: "Arterial pH 7.27",
+            q12: "hepatitis A virus",
+            q13: "Good hygiene practice is the cornerstone of prevention",
+            q14: "HBsAg",
+            q15: "HBsAg and IgM anti-HBc",
+            q16: "Hbe Ag",
+            q17: "Previous immunisation against hepatitis B without prior infection",
+            q18: "Give one further dose of hepatitis B vaccine",
+            q19: "Check hepatitis B e antigen (HBeAg) and HBV DNA level",
+            q20: "Acute hep B",
+            q21: "Hepatitis C infection with previous hepatitis B vaccination",
+            q22: "<10%",
+            q23: "80-85%",
+            q24: "Hepatitis C",
+            q25: "No vaccine is available but treatment is successful in around 50% of patients",
+            q26: "Give hepatitis B vaccine",
+            q27: "He should be offered oral antiviral therapy",
+            q28: "Hepatitis E",
+            q29: "Hepatitis E virus",
+            q30: "Episcleritis",
+            q31: "A, D",
+            q32: "A They are common feature of inflammatory bowel disease (Crhons)",
+            q33: "Behcet syndrome",
+            q34: "Facial Flushing",
+            q35: "Appendix",
+            q36: "Urinary 5 HIAA (hydroxy indole acetic acid)",
+            q37: "Niacin deficiency",
+            q38: "Niacin deficiency",
+            q39: "Scurvy",
+            q40: "Haemoglobin",
+            q41: "All of the above",
+            q42: "Internal bleeding",
+            q43: "All of the above",
+            q44: "Pancreatitis",
+            q45: "Intravenous fluids + analgesia",
+            q46: "Ascitic fluid amylase",
+            q47: "Amylase",
+            q48: "Acute pancreatitis",
+            q49: "Hyperchylomicronemia",
+            q50: "Azathioprine",
+            q51: "Sodium valproate",
+            q52: "Ultrasound",
+            q53: "CRP",
+            q54: "Pancreas",
+            q55: "Duodenum",
+            q56: "Terminal ileum",
+            q57: "Lipase",
+            q58: "hyperglycemia",
+            q59: "CT pancreas",
+            q60: "CT abdomen",
+            q61: "Pancreas",
+            q62: "Somatization disorder",
+            q63: "hypochondriasis",
+            q64: "Gastrin",
+            q65: "Antral mucosa",
+            q66: "Secretin",
+            q67: "cholecystokinin CCK",
+            q68: "Fasting gastrin",
+            q69: "Multiple endocrine neoplasia type 1",
+            q70: "MEN1",
+            q71: "Pituitary adenoma"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
